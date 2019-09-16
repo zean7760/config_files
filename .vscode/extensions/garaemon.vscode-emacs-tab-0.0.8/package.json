@@ -1,0 +1,56 @@
+{
+	"name": "vscode-emacs-tab",
+	"displayName": "vscode-emacs-tab",
+	"description": "emacs like tab behavior",
+	"version": "0.0.8",
+	"publisher": "garaemon",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/garaemon/vscode-emacs-tab.git"
+	},
+	"engines": {
+		"vscode": "^1.18.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:emacs-tab.reindentCurrentLine",
+		"onCommand:emacs-tab.debugEstimateIndentLevel"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "emacs-tab.reindentCurrentLine",
+				"title": "reindent current line"
+			},
+			{
+				"command": "emacs-tab.debugEstimateIndentLevel",
+				"title": "show estimated indent level"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.5.3",
+		"vscode": "^1.1.5",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"comment-json": "^1.1.3",
+		"tslint": "^5.8.0"
+	},
+	"__metadata": {
+		"id": "0fc57da4-9d9d-480a-a158-2c6764f46710",
+		"publisherId": "85a0aa67-9ba3-4d1b-b526-b56c9a72f7c3",
+		"publisherDisplayName": "garaemon"
+	}
+}

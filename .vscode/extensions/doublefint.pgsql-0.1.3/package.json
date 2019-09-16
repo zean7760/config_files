@@ -1,0 +1,107 @@
+{
+	"name": "pgsql",
+	"description": "run sql in your postgres instance",
+	"license": "MIT",
+	"version": "0.1.3",
+	"publisher": "doublefint",
+	"engines": {
+		"vscode": "^1.19.0"
+	},
+	"icon": "images/logo.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/doublefint/vscode-pgsql.git"
+	},
+	"categories": [
+		"Other",
+		"Languages"
+	],
+	"activationEvents": [
+		"onLanguage:pgsql"
+	],
+	"main": "./extension",
+	"contributes": {
+		"commands": [
+			{
+				"category": "pgsql",
+				"command": "pgsql.run",
+				"title": "run in postgres"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "pgsql.run",
+				"key": "ctrl+f5",
+				"mac": "cmd+f5",
+				"when": "editorTextFocus && editorLangId == pgsql"
+			}
+		],
+		"languages": [
+			{
+				"id": "pgsql",
+				"extensions": [
+					".sql",
+					".ddl",
+					".dml",
+					".pgsql"
+				],
+				"aliases": [
+					"pgsql"
+				],
+				"configuration": "./extension/config.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "pgsql",
+				"scopeName": "source.plpgsql.postgres",
+				"path": "./extension/grammars.tmLanguage"
+			}
+		],
+		"configuration": {
+			"title": "pgsql configuration",
+			"type": "object",
+			"properties": {
+				"pgsql.connection": {
+					"type": "string",
+					"default": "postgres://username:pasword@localhost:5432/dbname",
+					"description": "connection string to your postgres db"
+				},
+				"pgsql.completion.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "enable or disable code completion"
+				},
+				"pgsql.signatureHelp.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "enable or disable code completion"
+				}
+			}
+		},
+		"snippets": [
+			{
+				"language": "pgsql",
+				"path": "./extension/snippets.json"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^7.0.43",
+		"eslint": "^4.6.1",
+		"jshint": "^2.9.5",
+		"jslint": "^0.11.0",
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.6"
+	},
+	"__metadata": {
+		"id": "741aaa35-4ec9-4adb-88e3-1ea8cb07f4c6",
+		"publisherId": "a575a30f-2743-47c1-a507-e0f545d8d4bc",
+		"publisherDisplayName": "doublefint"
+	}
+}
